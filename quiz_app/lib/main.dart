@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/quiz.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: Scaffold(
       body: Quiz(),
     ),
