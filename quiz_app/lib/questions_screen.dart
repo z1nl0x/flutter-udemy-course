@@ -5,7 +5,7 @@ import 'package:quiz_app/answer_button.dart';
 import 'package:quiz_app/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen(this.onSelectAnswer, {super.key});
+  const QuestionsScreen({required this.onSelectAnswer, super.key});
 
   final void Function(String answer) onSelectAnswer;
 
