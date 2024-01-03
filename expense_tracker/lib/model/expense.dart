@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
+
 import 'package:intl/intl.dart';
 
-final formatter = DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_BR');
+
+final format = Intl.defaultLocale = 'pt_BR';
+
+final formatter = DateFormat.yMd(format);
 
 const uuid = Uuid();
 
@@ -30,6 +34,6 @@ class Expense {
   final Category category;
 
   String get getFormattedDate {
-    return DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br').format(date);
+    return formatter.format(date);
   }
 }
