@@ -1,4 +1,4 @@
-import 'package:expense_tracker/model/expense.dart';
+import 'package:expense_tracker/models/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/widgets/expenses.dart';
 
@@ -100,7 +100,7 @@ class _NewExpenseState extends State<NewExpense> {
                   controller: _amountController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
-                    prefixText: '\$ ',
+                    prefixText: 'R\$ ',
                     label: Text('Amount'),
                   ),
                 ),
