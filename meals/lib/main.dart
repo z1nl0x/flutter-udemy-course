@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meals/screens/categories.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -22,20 +23,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      home: const Scaffold(
-          body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Hello World',
-              style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
-            )
-          ],
-        ),
-      )),
+      home: const CategoriesScreen(),
     ); // Todo ...,
   }
 }
