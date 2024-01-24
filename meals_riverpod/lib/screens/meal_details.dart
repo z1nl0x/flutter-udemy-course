@@ -13,7 +13,6 @@ class MealDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final favoriteMeals = ref.watch(favoriteMealsProvider);
 
     final isFavorite = favoriteMeals.contains(meal);
@@ -23,17 +22,35 @@ class MealDetailsScreen extends ConsumerWidget {
           title: Text(meal.title),
           actions: [
             IconButton(
-              onPressed: () {
-                final wasAdded = ref.read(favoriteMealsProvider.notifier).toggleMealFavoriteStatus(meal);
-                ScaffoldMessenger.of(context).clearSnackBars();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(wasAdded ? 'Meal Added as a favorite.' : 'Meal removed.'),
+                onPressed: () {
+                  final wasAdded = ref
+                      .read(favoriteMealsProvider.notifier)
+                      .toggleMealFavoriteStatus(meal);
+                  ScaffoldMessenger.of(context).clearSnackBars();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(wasAdded
+                          ? 'Meal Added as a favorite.'
+                          : 'Meal removed.'),
+                    ),
+                  );
+                },
+                icon: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (child, animation) {
+                    return RotationTransition(
+                      turns: Tween(
+                        begin: 0.8,
+                        end: 1.0,
+                      ).animate(animation),
+                      child: child,
+                    );
+                  },
+                  child: Icon(
+                    isFavorite ? Icons.star : Icons.star_border,
+                    key: ValueKey(isFavorite),
                   ),
-                );
-              },
-              icon: Icon(isFavorite ? Icons.star : Icons.star_border),
-            )
+                ))
           ],
         ),
         body: SingleChildScrollView(
