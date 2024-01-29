@@ -3,11 +3,15 @@ import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/models/category.dart';
 import 'package:shopping_list/models/grocery_item.dart';
 
+import 'package:http/http.dart' as http;
+
 class NewItem extends StatefulWidget {
   const NewItem({super.key});
 
   @override
-  _NewItemState createState() => _NewItemState();
+  State<NewItem> createState() {
+    return _NewItemState();
+  }
 }
 
 class _NewItemState extends State<NewItem> {
@@ -19,6 +23,10 @@ class _NewItemState extends State<NewItem> {
   void _saveItem() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+
+      final url = Uri.https('flutter-prep-689ec-default-rtdb.firebaseio.com', 'shopping-list.json');
+      http.post(url);
+
       Navigator.of(context).pop(GroceryItem(
           id: DateTime.now().toString(),
           name: _enteredName,
