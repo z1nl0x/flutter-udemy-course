@@ -57,9 +57,10 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
               height: 16,
             ),
             ElevatedButton.icon(
-                onPressed: _savePlace,
-                icon: const Icon(Icons.add),
-                label: const Text('Add Place'))
+              onPressed: _savePlace,
+              icon: const Icon(Icons.add),
+              label: const Text('Add Place'),
+            ),
           ],
         ),
       ),
